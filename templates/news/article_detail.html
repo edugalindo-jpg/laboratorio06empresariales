@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }} - Tecsup News{% endblock %}
+
+{% block content %}
+    <article class="article-detail">
+        <a href="{% url 'news:home' %}" class="back-link">
+            &larr; Volver a la portada
+        </a>
+
+        <h1>{{ article.title }}</h1>
+
+        <div class="meta-bar">
+            <span>
+                Fecha:
+                <time datetime="{{ article.published_date|date:'c' }}">
+                    {{ article.published_date|date:"d/m/Y H:i" }}
+                </time>
+            </span>
+            <span>Autor: {{ article.author }}</span>
+        </div>
+
+        {% if article.featured_image %}
+            <img
+                src="{{ article.featured_image.url }}"
+                alt="{{ article.title }}"
+                class="featured-img"
+            >
+        {% endif %}
+
+        <div class="article-body">
+            {{ article.content }}
+        </div>
+
+        <div class="categories-tag">
+            <strong>Categorías:</strong>
+            {% for cat in article.categories.all %}
+                <a
+                    href="{% url 'news:category_articles' cat.slug %}"
+                    class="badge"
+                >{{ cat.name }}</a>
+            {% endfor %}
+        </div>
+
+        {% if article.author.bio %}
+            <div class="author-box">
+                <h3>Sobre {{ article.author }}</h3>
+                <p>{{ article.author.bio }}</p>
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

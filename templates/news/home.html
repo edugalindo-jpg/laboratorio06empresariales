@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Portada - Portal de Noticias{% endblock %}
+
+{% block content %}
+    <div class="page-heading">
+        <p class="eyebrow">Actualidad Tecsup</p>
+        <h1>Últimas Noticias</h1>
+        <p class="page-lead">
+            Noticias de tecnología, educación e innovación de nuestra comunidad.
+        </p>
+    </div>
+
+    <div class="articles-grid">
+        {% for article in articles %}
+            {% include 'news/_article_card.html' with article=article %}
+        {% empty %}
+            <p class="no-results">
+                No hay noticias publicadas en este momento.
+            </p>
+        {% endfor %}
+    </div>
+{% endblock %}

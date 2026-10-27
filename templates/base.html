@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal de noticias de Tecsup Digital">
+    <title>{% block title %}Tecsup News Portal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="{% url 'news:home' %}" class="logo">
+                Tecsup<span>Digital</span>
+            </a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="{% url 'news:home' %}">Inicio</a>
+                {% for category in categories %}
+                    <a href="{% url 'news:category_articles' category.slug %}">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container layout">
+        <section class="main-content">
+            {% block content %}{% endblock %}
+        </section>
+
+        <aside class="sidebar">
+            {% block sidebar %}
+            <div class="card sidebar-card">
+                <h3>Acerca del Portal</h3>
+                <p>
+                    Plataforma de noticias del laboratorio de Django para
+                    Desarrollo de Aplicaciones Empresariales.
+                </p>
+            </div>
+
+            <div class="card sidebar-card">
+                <h3>Categorías</h3>
+                <ul class="category-list">
+                    {% for category in categories %}
+                        <li>
+                            <a href="{% url 'news:category_articles' category.slug %}">
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    {% empty %}
+                        <li>Aún no hay categorías registradas.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endblock %}
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2026 Tecsup Digital - Galindo Huaman Edu Edward.
+                Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

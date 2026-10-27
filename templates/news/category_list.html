@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }} - Portal de Noticias{% endblock %}
+
+{% block content %}
+    <div class="page-heading">
+        <p class="eyebrow">Categoría</p>
+        <h1>{{ category.name }}</h1>
+        <p class="page-lead">
+            {{ articles|length }} noticia{{ articles|length|pluralize:"s" }}
+            publicada{{ articles|length|pluralize:"s" }} en esta categoría.
+        </p>
+        <a href="{% url 'news:home' %}" class="back-link">
+            &larr; Volver a la portada
+        </a>
+    </div>
+
+    <div class="articles-grid">
+        {% for article in articles %}
+            {% include 'news/_article_card.html' with article=article %}
+        {% empty %}
+            <p class="no-results">
+                No hay noticias publicadas en esta categoría.
+            </p>
+        {% endfor %}
+    </div>
+{% endblock %}
