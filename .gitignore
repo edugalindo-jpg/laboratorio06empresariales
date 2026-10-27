@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django
+db.sqlite3
+db.sqlite3-journal
+*.log
+staticfiles/
+
+# Demo media is versioned intentionally so the portal renders images out of the box.
+# It can be regenerated with `python manage.py seed_demo`.
+
+
+# Environments and editors
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

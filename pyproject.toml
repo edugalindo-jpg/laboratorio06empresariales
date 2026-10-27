@@ -1,0 +1,8 @@
+[tool.ruff]
+line-length = 88
+exclude = ["news/migrations"]
+
+[tool.ruff.lint]
+# Django's ModelAdmin uses mutable class attributes by design.
+# Implicit string concatenation is used to keep messages readable.
+ignore = ["RUF012", "ISC004"]
