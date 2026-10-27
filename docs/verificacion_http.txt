@@ -1,0 +1,18 @@
+Verificación HTTP del portal - Laboratorio 06
+=======================================================
+Base URL: http://127.0.0.1:8000
+
+Recurso                                                                                    HTTP   Content-Type
+----------------------------------------------------------------------------------------------------------------------------------
+/                                                                                          200    text/html; charset=utf-8
+/article/tecsup-inaugura-laboratorio-inteligencia-artificial/                              200    text/html; charset=utf-8
+/category/tecnologia/                                                                      200    text/html; charset=utf-8
+/static/css/styles.css                                                                     200    text/css
+/media/articles/tecsup-inaugura-laboratorio-inteligencia-artificial.jpg                    200    image/jpeg
+
+Comprobaciones sobre la portada:
+- Tarjetas article-card: 6
+- Imágenes /media/articles/: 6
+- Hoja de estilos enlazada: True
+- Enlaces a /article/: 12
+- Enlaces a /category/: 16
